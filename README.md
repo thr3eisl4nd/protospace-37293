@@ -11,7 +11,9 @@
 | occupation         | text   | null: false               |
 | position           | text   | null: false               |
 
--
+### Association
+
+-has many :prototypes
 -has many :comments
 
 ## prototypes テーブル
@@ -23,6 +25,11 @@
 | concept     | text       | null: false                    |
 | user        | references | null: false, foreign_key: true |
 
+### Association
+
+-belongs_to :user
+-has_many :comments
+
 ## comments テーブル
 
 | Column    | Type       | Options                        |
@@ -31,5 +38,7 @@
 | prototype | references | null: false, foreign_key: true |
 | user      | references | null: false, foreign_key: true |
 
--belongs_to : user
--belongs_to : prototype
+### Association
+
+-belongs_to :user
+-belongs_to :prototype
