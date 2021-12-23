@@ -1,5 +1,6 @@
 class Prototype < ApplicationRecord
   belongs_to :user
+  has_many :cooments, dependent: :destroy
   has_one_attached :image
 
   validates :title, presence: true
