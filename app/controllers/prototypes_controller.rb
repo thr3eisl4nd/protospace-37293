@@ -18,10 +18,15 @@ class PrototypesController < ApplicationController
 
   def show
     @prototype = Prototype.find(params[:id])
+    @comment = Comment.new
+    @comments = @prototype.comments.includes(:user)
   end
 
   def edit
     @prototype = Prototype.find(params[:id])
+    unless @prototype.user.id == current_user.id
+      redirect_to action: :index
+    end
   end
 
   def update
